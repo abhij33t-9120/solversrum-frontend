@@ -1,0 +1,51 @@
+<div class="product__body">
+  
+  <h3>Products</h3>
+  <div class="products">
+    <table class="table table-dark">
+      <thead>
+        <tr >
+        <td scope="col">Product Id</td>
+        <td scope="col">Product Name</td>
+        <td scope="col">Unit</td>
+        <td scope="col">Price</td>
+      </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let product of products">
+        <td>{{product.productId}}</td>
+        <td>{{product.productName}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.unit}}</td>
+        </tr>
+        <tr style="text-align: center;">
+          <td colspan="4"><button type="button" class="btn add__products">Add Products</button> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="product__form">
+    <form (ngSubmit)="addProducts()">
+      <div class="form-group">
+        <label for="product__name">Product Name</label>
+        <input type="text" id="product__name" placeholder="Enter product name" [(ngModel)]="productVo.productName" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label for="product__unit">Unit</label>
+        <input type="number" id="product__unit" placeholder="Enter units.." [(ngModel)]="productVo.unit" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label for="product__price">Price</label>
+        <input type="number" id="product__price" placeholder="Enter price" [(ngModel)]="productVo.price" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label for="product__supplier">Supplier Id</label>
+        <input type="number" id="supplier__id" placeholder="Enter supplier id" [(ngModel)]="productVo.supplierId" [ngModelOptions]="{standalone: true}">
+      </div>
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </form>
+  </div>
+</div>
+
+
+

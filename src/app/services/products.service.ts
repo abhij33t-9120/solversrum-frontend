@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from 'src/models/Product';
+import { ProductVo } from 'src/app/models/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class ProductsService {
     return this.httpClient.get('http://localhost:8050/api/v1/products')
   }
 
-  hello(){
-    console.log('hello')
+  addProducts(product : ProductVo){
+    return this.httpClient.post('http://localhost:8050/api/v1/products',{list : [product]}, {responseType : 'text'})
   }
 }

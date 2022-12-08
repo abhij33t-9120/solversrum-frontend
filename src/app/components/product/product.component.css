@@ -1,0 +1,26 @@
+.product__body{
+    margin: 30px;
+    padding: 10px;
+}
+
+
+.products{
+    padding-top: 20px;
+    width: 600px;
+    align-items: center;
+    margin: auto;
+}
+
+h3{
+    text-align: center;
+    margin: auto;
+}
+
+thead>tr{
+    color: var(--color2);
+}
+
+.add__products{
+    color: var(--color4);
+    background-color: var(--color1);
+}
