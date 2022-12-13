@@ -39,7 +39,7 @@
 
 .header__left>div{
     float: left;
-    padding-right: 5px;
+    padding-left: 10px;
 }
 
 .header__right>div{
@@ -47,4 +47,5 @@
     gap: 5px;
     padding-right: 5px;
 }
+
 
