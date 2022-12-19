@@ -1,1 +1,5 @@
 <p>cart works!</p>
+
+<li *ngFor="let cart of cartList">
+    <ul>{{cart.productName}} {{cart.price}} {{cart.supplierId}}</ul>
+</li>

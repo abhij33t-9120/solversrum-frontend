@@ -5,6 +5,7 @@
 
 
 .products {
+    /* position: relative; */
     padding-top: 20px;
     width: 600px;
     align-items: center;
@@ -31,6 +32,10 @@ tbody {
     border: none;
     background: none;
     color: white;
+}
+
+.product__btn__clicked{
+    color: var(--color1);
 }
 
 .add__products {
@@ -74,4 +79,46 @@ tbody {
     background-color: var(--color1);
     border: 0;
     color: var(--color4);
+}
+
+.edit__form{
+    margin-top: auto;
+    width: 450px;
+    float: right;
+    position: absolute;
+    top: 200px;
+    right: 20px;
+}
+
+.edit__form h2{
+    text-align: center;
+}
+
+
+.edit__form1{
+    margin: auto;
+    width: 400px;
+    background-color: #393E46;
+    color: white;
+    align-items: center;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+.edit__form1 div{
+    margin: 10px;
+    display: grid;
+    flex-direction: row;
+}
+
+.edit__form1 button{
+    width: 100px;
+    margin-top: 10px;
+    background-color: var(--color1);
+    border: 0;
+    color: var(--color4);
+}
+
+.edit__form1 .form__button{
+    justify-content: center;
 }

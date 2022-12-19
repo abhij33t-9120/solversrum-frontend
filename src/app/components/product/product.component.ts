@@ -8,29 +8,39 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  products: Product[];
+  products: ProductVo[];
   addBtnState: boolean = false;
   editBtnState: boolean = false;
   range: number = 0;
   productVo: ProductVo = new ProductVo();
+  cartList : Product[]
+  
 
-  private productService: ProductsService;
-  constructor(productService: ProductsService) {
-    this.productService = productService;
+  constructor(private productService: ProductsService) {
+
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.getProducts()
     this.productService.productListModified.subscribe(res => {
       this.getProducts()
-    })
+    })  
   }
 
-  getProducts() {
+  getProducts() : any{
     this.productService.getProducts()
       .subscribe(res => {
-        this.products = res;
-      });
+        this.products = []
+        res.forEach(p => {
+          p.addBtnState = false
+          this.products.push(p)
+        })
+        this.cartList = this.productService.cartList
+        this.checkCartBtnState()
+        console.log(this.products)
+      })
+      
+      
   }
 
   addProducts() {
@@ -45,6 +55,14 @@ export class ProductComponent implements OnInit {
           alert(error.error)
         });
     this.productVo = new ProductVo();
+  }
+
+  checkCartBtnState(){
+    for(let i=0; i<this.products.length; i++){
+      if(this.productService.cartListSet.has(this.products[i].productId)){
+        this.products[i].addBtnState = true;
+      }
+    }
   }
 
   changeAddBtnState() {
@@ -63,15 +81,26 @@ export class ProductComponent implements OnInit {
   }
 
   editProduct() {
+    this.changeEditBtnState()
     this.productService.editProduct(this.productVo)
     .subscribe(res => {
       alert(res)
     })
+    this.productVo = new ProductVo()
   }
 
-  setEditProductId(id){
+  setEditProductId(product){
     this.changeEditBtnState()
-    this.productVo.productId = id
+    this.productVo.productId = product.productId
+    this.productVo.supplierId = product.supplierId
+  }
+
+  addToCart(product: Product, i){
+    this.productService.cartList.push(product)
+    this.productService.addCartList(product.productId)
+    this.products[i].addBtnState = true
+    console.log(this.products[i])
+    console.log(this.productService.cartListSet)
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject, tap } from 'rxjs';
+import { map, Observable, Subject, tap } from 'rxjs';
 import { Product, ProductVo } from 'src/app/models/Product';
 
 @Injectable({
@@ -8,13 +8,13 @@ import { Product, ProductVo } from 'src/app/models/Product';
 })
 export class ProductsService {
   private _base = 'http://localhost:8050/api/v1/products'
-  httpClient: any;
   private _productListModified = new Subject<void>();
+  cartList : Product[] = []
+  cartListSet = new Set();
   constructor(
-    httpClient: HttpClient
-  ) {
-    this.httpClient = httpClient;
-  }
+    private httpClient: HttpClient
+  ) {}
+  
 
   get productListModified() {
     return this._productListModified;
@@ -22,7 +22,7 @@ export class ProductsService {
 
   getProducts(): Observable<Product[]> {
     console.log("on getProducts")
-    return this.httpClient.get(this._base)
+    return this.httpClient.get<Product[]>(this._base)
   }
 
   addProducts(product: ProductVo): any {
@@ -48,5 +48,10 @@ export class ProductsService {
       })
     );
   }
+
+  addCartList(productId){
+    this.cartListSet.add(productId)
+  }
+  
 }
 
