@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { ProductsService } from './services/products.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,11 @@ import { Component, ViewChild } from '@angular/core';
 })
 export class AppComponent {
   title = 'solversrum-frontend';
-  cartList : any
-  constructor(){
-    
+  cartSize : number = 0
+  constructor(private productService : ProductsService){
+    this.cartSize = this.productService.cartListSet.size
+    this.productService.cartListModified.subscribe(()=>{
+      this.cartSize = this.productService.cartListSet.size
+    })
   }
 }

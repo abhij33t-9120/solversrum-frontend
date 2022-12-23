@@ -1,1 +1,52 @@
-<p>shipper works!</p>
+<div class="shipper__body">
+
+    <h3>Shippers</h3>
+    <div class="shippers">
+        <table class="table">
+            <thead>
+                <tr>
+                  <td scope="col">Shipper Id</td>
+                  <td scope="col">Shipper Name</td>
+                  <td scope="col">Phone</td>
+                  <td scope="col">Delete</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let shipper of shippers; let i = index">
+                  <td>{{shipper.shipperId}}</td>
+                  <td>{{shipper.shipperName}}</td>
+                  <td>{{shipper.phone}}</td>
+                  <td><button (click)="deleteShipper(shipper.shipperId)" class="product__btn"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                  </svg></button></td>
+                </tr>
+                  <tr style="text-align: center;">
+                    <td colspan="4"><button type="button" class="btn add__products" (click)="changeAddBtnState()">Add
+                        Products</button> </td>
+                  </tr>
+        </table>
+    </div>
+    <div class="form" *ngIf="addBtnState">
+      <h2>Add Product</h2>
+      <div class="product__form">
+        <form (ngSubmit)="addShipper()">
+          <div>
+            <label for="product__name">Product Name</label>
+            <input type="text" id="product__name" placeholder="Enter product name" [(ngModel)]="shipperData.shipperName"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div>
+            <label for="product__unit">Unit</label>
+            <input type="number" id="product__unit" placeholder="Enter units.." [(ngModel)]="shipperData.phone"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form__button">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

@@ -9,20 +9,25 @@ import { CartComponent } from './components/cart/cart.component';
 import { SupplierComponent } from './components/supplier/supplier.component';
 import { ShipperComponent } from './components/shipper/shipper.component';
 import { FormsModule } from '@angular/forms';
-
+import { CustomerComponent } from './components/customer/customer.component';
+import { OrderComponent } from './components/order/order.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     CartComponent,
     SupplierComponent,
-    ShipperComponent
+    ShipperComponent,
+    CustomerComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]

@@ -10,7 +10,9 @@
     width: 600px;
     align-items: center;
     margin: auto;
-    background-color: var(--form);
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 h3 {
@@ -21,7 +23,9 @@ h3 {
 
 
 thead>tr {
-    color: var(--color2);
+    color: rgb(244, 142, 59);
+    font-style: oblique;
+    font-weight: bold;
 }
 
 tbody {
@@ -35,12 +39,12 @@ tbody {
 }
 
 .product__btn__clicked{
-    color: var(--color1);
+    color: rgb(244, 142, 59);;
 }
 
 .add__products {
-    color: var(--color4);
-    background-color: var(--color1);
+    color: black;
+    background-color: rgb(244, 142, 59);;
 }
 
 .form h2 {
@@ -48,13 +52,28 @@ tbody {
     text-align: center;
 }
 
+.add__modal, .message__modal{
+    padding: 10px;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: rgb(244, 142, 59);
+}
+
+.message__body{
+    margin: auto;
+    height: auto;
+    width: auto;
+    display: grid;
+}
+
 .product__form {
     margin: auto;
-    width: 600px;
-    background-color: #393E46;
-    color: white;
+    height : auto;
+    width: auto;
+    
     align-items: center;
-    border-radius: 25px;
+    /* border-radius: 25px; */
     padding: 20px;
 }
 
@@ -76,9 +95,9 @@ tbody {
 .product__form button {
     width: 100px;
     margin-top: 10px;
-    background-color: var(--color1);
+    background-color:rgb(244, 142, 59);
     border: 0;
-    color: var(--color4);
+    color: black;
 }
 
 .edit__form{
@@ -98,11 +117,13 @@ tbody {
 .edit__form1{
     margin: auto;
     width: 400px;
-    background-color: #393E46;
-    color: white;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     align-items: center;
     border-radius: 25px;
     padding: 20px;
+    color: rgb(244, 142, 59);;
 }
 
 .edit__form1 div{
@@ -114,9 +135,9 @@ tbody {
 .edit__form1 button{
     width: 100px;
     margin-top: 10px;
-    background-color: var(--color1);
+    background-color:rgb(244, 142, 59);
     border: 0;
-    color: var(--color4);
+    color: black;
 }
 
 .edit__form1 .form__button{

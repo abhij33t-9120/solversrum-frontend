@@ -9,8 +9,9 @@ import { Product, ProductVo } from 'src/app/models/Product';
 export class ProductsService {
   private _base = 'http://localhost:8050/api/v1/products'
   private _productListModified = new Subject<void>();
-  cartList : Product[] = []
+  cartList = []
   cartListSet = new Set();
+  cartListModified = new Subject<void>();
   constructor(
     private httpClient: HttpClient
   ) {}
@@ -33,7 +34,7 @@ export class ProductsService {
     );
   }
 
-  deleteProduct(id) {
+  deleteProduct(id):any {
     return this.httpClient.delete(this._base + '/' + id, { responseType: 'text' }).pipe(
       tap(() => {
         this._productListModified.next();
@@ -41,7 +42,7 @@ export class ProductsService {
     );
   }
 
-  editProduct(product : ProductVo){
+  editProduct(product : ProductVo):any{
     return this.httpClient.put(this._base + '/' + product.productId, product, {responseType: 'text'}).pipe(
       tap(() => {
         this._productListModified.next();
