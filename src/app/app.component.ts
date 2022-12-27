@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ProductsService } from './services/products.service';
+import { ProductsService } from 'src/app/services/product/products.service';
 
 @Component({
   selector: 'app-root',

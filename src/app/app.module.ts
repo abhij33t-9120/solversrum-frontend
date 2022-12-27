@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductsService } from 'src/app/services/products.service';
+import { ProductsService } from 'src/app/services/product/products.service';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { SupplierComponent } from './components/supplier/supplier.component';

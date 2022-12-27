@@ -1,1 +1,29 @@
-<p>order works!</p>
+<div class="order__body">
+
+    <h3>Orders</h3>
+    <div class="orders">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td scope="col">Order Id</td>
+                    <td scope="col">Customer Name</td>
+                    <td scope="col">Order Date</td>
+                    <td scope="col">Address</td>
+                    <td scope="col">Amount</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="clickabe" *ngFor="let order of orders; let i = index" (click)="open(order_detailsModal,order)">
+                    <td>{{order.orderId}}</td>
+                    <td>{{order.customer.customerName}}</td>
+                    <td>{{order.orderDate}}</td>
+                    <td>{{order.customer.address+', '+order.customer.city+', '+order.customer.postalCode}}</td>
+                    <td>{{order.total | currency:'INR':'symbol-narrow'}}</td>
+                </tr>
+        </table>
+    </div>
+</div>
+
+<ng-template #order_detailsModal let-modal>
+    <h2>{{selectedOrder.orderDate}}</h2>
+</ng-template>

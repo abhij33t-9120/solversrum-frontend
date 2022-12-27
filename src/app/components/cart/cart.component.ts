@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from 'src/app/models/Cart';
 import { Order, OrderDetails } from 'src/app/models/Order';
-import { CartService } from 'src/app/services/cart.service';
-import { ProductsService } from 'src/app/services/products.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { CartService } from 'src/app/services/cart/cart.service';
+import { ProductsService } from 'src/app/services/product/products.service';
+import { ModalService } from 'src/app/services/modal/modal.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
   cartList: Cart[]
   customerId: number
   closeResult: string = ""
-  constructor(private cartService: CartService, private productService: ProductsService, private modalService: NgbModal) { }
+  constructor(private cartService: CartService, private productService: ProductsService, public modalService: ModalService) { }
 
   ngOnInit(): void {
     this.cartList = this.cartService.getCartList()
@@ -53,30 +53,12 @@ export class CartComponent implements OnInit {
         orderDetails.push(orderDetail)
       })
       order.orderDetailsVo = orderDetails
-      this.cartService.order(order).subscribe(
-        res => alert(res),
-        error => alert(error.error)
-      )
+      this.cartService.order(order).subscribe({
+        next : res => alert(res),
+        error : error => alert(error.error)
+    })
     })
 
-  }
-
-  open(content: any) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
   }
 
   getShippers() {

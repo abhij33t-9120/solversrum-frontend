@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Shipper, ShipperVo } from 'src/app/models/Shipper';
-import { ShipperService } from 'src/app/services/shipper.service';
+import { ModalService } from 'src/app/services/modal/modal.service';
+import { ShipperService } from 'src/app/services/shipper/shipper.service';
 
 @Component({
   selector: 'app-shipper',
@@ -12,7 +13,7 @@ export class ShipperComponent implements OnInit {
   shippers : Shipper[]
   addBtnState : boolean = false
   shipperData : ShipperVo = new ShipperVo()
-  constructor(private shipperService : ShipperService ) {}
+  constructor(private shipperService : ShipperService, public modalService : ModalService ) {}
 
   ngOnInit(): void {
     this.getShippers()
@@ -34,14 +35,12 @@ export class ShipperComponent implements OnInit {
   }
 
   addShipper(){
-    this.shipperService.addShipper(this.shipperData).subscribe(res => {
-      alert(res)
-    },
-    (error : any) => {
-      alert(error.error)
+    this.shipperService.addShipper(this.shipperData).subscribe({
+      next : (res) =>  alert(res),
+      error : (error) => alert(error.error)
     })
   }
-  
+
   changeAddBtnState(){
     this.addBtnState = !this.addBtnState
   }

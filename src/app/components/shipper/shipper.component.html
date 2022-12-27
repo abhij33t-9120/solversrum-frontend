@@ -24,29 +24,32 @@
                   </svg></button></td>
                 </tr>
                   <tr style="text-align: center;">
-                    <td colspan="4"><button type="button" class="btn add__products" (click)="changeAddBtnState()">Add
-                        Products</button> </td>
+                    <td colspan="4"><button type="button" class="btn add__products" (click)="modalService.open(shipper_modal)">Add
+                        Shipper</button> </td>
                   </tr>
         </table>
     </div>
-    <div class="form" *ngIf="addBtnState">
-      <h2>Add Product</h2>
-      <div class="product__form">
-        <form (ngSubmit)="addShipper()">
-          <div>
-            <label for="product__name">Product Name</label>
-            <input type="text" id="product__name" placeholder="Enter product name" [(ngModel)]="shipperData.shipperName"
-              [ngModelOptions]="{standalone: true}">
-          </div>
-          <div>
-            <label for="product__unit">Unit</label>
-            <input type="number" id="product__unit" placeholder="Enter units.." [(ngModel)]="shipperData.phone"
-              [ngModelOptions]="{standalone: true}">
-          </div>
-          <div class="form__button">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
+    <ng-template #shipper_modal let-modal>
+      <div>
+        <h2>Add Shipper</h2>
+        <div class="product__form">
+          <form (ngSubmit)="addShipper(); modal.dismiss('Submit')">
+            <div>
+              <label for="product__name">Shipper Name</label>
+              <input type="text" id="shipper__name" placeholder="Enter shipper name" [(ngModel)]="shipperData.shipperName"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <div>
+              <label for="shipper__phone">Phone</label>
+              <input type="number" id="shipper__phone" placeholder="Enter shipper phone number" [(ngModel)]="shipperData.phone"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="form__button">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </ng-template>
+
 </div>

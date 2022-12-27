@@ -1,1 +1,77 @@
-<p>supplier works!</p>
+<div class="supplier__body">
+
+    <h3>Suppliers</h3>
+    <div class="suppliers">
+        <table class="table">
+            <thead>
+                <tr>
+                  <td scope="col">Supplier Id</td>
+                  <td scope="col">Supplier Name</td>
+                  <td scope="col">Address</td>
+                  <td scope="col">City</td>
+                  <td scope="col">Postal Code</td>
+                  <td scope="col">Phone</td>
+                  <td scope="col">Delete</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let supplier of suppliers; let i = index">
+                  <td>{{supplier.supplierId}}</td>
+                  <td>{{supplier.supplierName}}</td>
+                  <td>{{supplier.address}}</td>
+                  <td>{{supplier.city}}</td>
+                  <td>{{supplier.postalCode}}</td>
+                  <td>{{supplier.phone}}</td>
+                  <td></td>
+                  <td><button (click)="deleteSupplier(supplier.supplierId)" class="product__btn"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                  </svg></button></td>
+                </tr>
+                  <tr style="text-align: center;">
+                    <td colspan="7"><button type="button" class="btn add__products" (click)="modalService.open(Supplier_modal)">Add
+                        Supplier</button> </td>
+                  </tr>
+        </table>
+    </div>
+    <ng-template #Supplier_modal let-modal>
+      <div>
+        <h2>Add Supplier</h2>
+        <div class="supplier__form">
+          <form (ngSubmit)="addSupplier(); modal.dismiss('Submit')">
+            <div>
+              <label for="supplier__name">Supplier Name</label>
+              <input type="text" id="Supplier__name" placeholder="Enter Supplier name" [(ngModel)]="supplierVo.supplierName"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <div>
+              <label for="Supplier__address">Address</label>
+              <input type="text" id="Supplier__address" placeholder="Enter Supplier address" [(ngModel)]="supplierVo.address"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <div>
+              <label for="Supplier__city">City</label>
+              <input type="text" id="Supplier__city" placeholder="Enter city" [(ngModel)]="supplierVo.city"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <div>
+              <label for="Supplier__pc">Postal Code</label>
+              <input type="number" id="Supplier__pc" placeholder="Enter postal code" [(ngModel)]="supplierVo.postalCode"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <div>
+              <label for="Supplier__phone">Phone</label>
+              <input type="number" id="Supplier__phone" placeholder="Enter Supplier phone number" [(ngModel)]="supplierVo.phone"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="form__button">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-template>
+
+</div>

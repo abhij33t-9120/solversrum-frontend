@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, tap } from 'rxjs';
-import { Shipper } from '../models/Shipper';
+import { Shipper } from '../../models/Shipper';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class ShipperService {
     )
   }
 
-  addShipper(shipper) {
+  addShipper(shipper) : any {
     return this.http.post(this._base, {'list' : [shipper]}, { responseType: 'text' }).pipe(
       tap(() => this._ShipperListModified.next())
     )
