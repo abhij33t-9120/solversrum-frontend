@@ -1,5 +1,6 @@
 
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 /* colors */
 :root{
@@ -12,14 +13,40 @@
 
 
 .body{
-    background: #FEAC5E;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #4BC0C8, #C779D0, #FEAC5E);  /* Chrome 10-25, Safari 5.1-6 */  
-    background: linear-gradient(to left, #4BC0C8, #C779D0, #FEAC5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: #FEAC5E;  
+    background: -webkit-linear-gradient(to left, #4BC0C8, #C779D0, #FEAC5E);  
+    background: linear-gradient(to left, #4BC0C8, #C779D0, #FEAC5E); */
+    background: #C9D6FF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    margin:  20px;
+    margin:  0;
+    padding: 20px;
+    height: 100%;
    
 }
 
 *{
-    font-family: 'century gothic';
+    font-family: 'Montserrat';
+    white-space: pre-line;
+}
+
+.toast{
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, 0px);
+    z-index: 9999;
+    top: 0;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* width: fit-content; */
+}
+
+ngb-toast{
+    width: 500px;
+}
+
+.toast__message{
+    color: #C9D6FF;
 }

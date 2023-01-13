@@ -13,7 +13,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="clickabe" *ngFor="let order of orders; let i = index" (click)="open(order_detailsModal,order)">
+                <tr class="clickabe" *ngFor="let order of orders; let i = index"
+                    (click)="open(order_detailsModal,order)">
                     <td>{{order.orderId}}</td>
                     <td>{{order.customer.customerName}}</td>
                     <td>{{order.orderDate}}</td>
@@ -25,5 +26,32 @@
 </div>
 
 <ng-template #order_detailsModal let-modal>
-    <h2>{{selectedOrder.orderDate}}</h2>
+    <div class="add__modal">
+        <h2>Order Details :</h2>
+        <p>Order ID : <span>{{selectedOrder.orderId}}</span></p>
+        <p>Order Date : <span>{{selectedOrder.orderDate}}</span></p>
+        <p>Customer Name : <span>{{selectedOrder.customer.customerName}}</span></p>
+        <p>Products Details : </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Product Name</td>
+                    <td>Quantity</td>
+                    <td>Price</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let o of selectedOrder.orderDetailsVo">
+                    <td>{{o.productVo.productName}}</td>
+                    <td>{{o.quantity}}</td>
+                    <td>{{o.productVo.price| currency:'INR':'symbol-narrow'}}</td>
+                    <td>{{o.quantity*o.productVo.price| currency:'INR':'symbol-narrow'}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Shipped by : <span style="margin-right: 30px;">{{selectedOrder.shipper.shipperName}}</span>ID : <span>{{selectedOrder.shipper.shipperId}}</span></p>
+        <p>Grand Total : <span>{{selectedOrder.total| currency:'INR':'symbol-narrow'}}</span></p>
+    </div>
+    
 </ng-template>

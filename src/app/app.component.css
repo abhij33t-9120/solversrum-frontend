@@ -1,24 +1,27 @@
-
-
-.header{
+.header {
     /* display: flex; */
     flex-direction: row;
-    background: #0F2027;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #0F2027;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    gap: 20px;
+    gap: 30px;
     border-radius: 25px;
     color: white;
     padding: 20px;
     overflow: auto;
+    margin-top: -30px;
 }
 
-.header__home{
+.header__home {
     text-decoration: none;
-    color: white; 
+    color: white;
 }
-.header__left{
+
+.header__left {
     display: flex;
     float: left;
     flex: 2;
@@ -26,32 +29,87 @@
     /* justify-content: space-around; */
 }
 
-.header__right{
+.header__right {
     display: flex;
     float: right;
     flex: 1;
     padding: 10px;
-    
+
 }
 
-.header__right>div>a{
+.header__right>div>a {
     text-decoration: none;
     color: white;
     padding: 5px;
 }
 
-.header__left>div{
+.header__left>div {
     float: left;
     padding-left: 10px;
 }
 
-.header__right>div{
+.header__right>div {
     float: left;
     gap: 5px;
     padding-right: 5px;
 }
 
-.badge{
+.badge {
     margin-left: -8px;
 }
 
+.welcome {
+    height: 600px;
+    margin: 0;
+}
+
+.add__modal {
+    padding: 10px;
+    background: #0F2027;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #C9D6FF;
+}
+
+/* .message__body{
+    margin: auto;
+    height: auto;
+    width: auto;
+    display: grid;
+} */
+
+.customer__form {
+    margin: auto;
+    height: auto;
+    width: auto;
+
+    align-items: center;
+    /* border-radius: 25px; */
+    padding: 20px;
+}
+
+.customer__form div {
+    margin: 10px;
+    display: grid;
+    flex-direction: row;
+}
+
+.customer__form input {
+    border-radius: 25px;
+    border: 0;
+}
+
+.customer__form .form__button {
+    justify-content: center;
+}
+
+.customer__form button {
+    width: 100px;
+    margin-top: 10px;
+    background-color: #C9D6FF;
+    border: 0;
+    color: black;
+}

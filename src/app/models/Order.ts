@@ -1,3 +1,5 @@
+import { Product } from "./Product"
+
 export class Order{
     orderDate : string
     customerId : number
@@ -13,6 +15,6 @@ export class Order{
 export class OrderDetails{
     quantity : number
     productId : number
-    productVo : any 
+    productVo : Product
     orderDetailsId : number
 }

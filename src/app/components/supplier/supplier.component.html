@@ -22,8 +22,7 @@
                   <td>{{supplier.city}}</td>
                   <td>{{supplier.postalCode}}</td>
                   <td>{{supplier.phone}}</td>
-                  <td></td>
-                  <td><button (click)="deleteSupplier(supplier.supplierId)" class="product__btn"><svg
+                  <td><button (click)="deleteSupplier(supplier.supplierId)" class="supplier__btn"><svg
                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill"
                     viewBox="0 0 16 16">
                     <path
@@ -31,13 +30,13 @@
                   </svg></button></td>
                 </tr>
                   <tr style="text-align: center;">
-                    <td colspan="7"><button type="button" class="btn add__products" (click)="modalService.open(Supplier_modal)">Add
+                    <td colspan="7"><button type="button" class="btn add__suppliers" (click)="modalService.open(Supplier_modal)">Add
                         Supplier</button> </td>
                   </tr>
         </table>
     </div>
     <ng-template #Supplier_modal let-modal>
-      <div>
+      <div class="add__modal">
         <h2>Add Supplier</h2>
         <div class="supplier__form">
           <form (ngSubmit)="addSupplier(); modal.dismiss('Submit')">
@@ -74,4 +73,7 @@
       </div>
     </ng-template>
 
+    <ngb-toast *ngIf="toastState" #message_toast class="toast">
+      <span class="toast__message">{{message}}</span>
+    </ngb-toast>
 </div>

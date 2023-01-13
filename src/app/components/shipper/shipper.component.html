@@ -16,7 +16,7 @@
                   <td>{{shipper.shipperId}}</td>
                   <td>{{shipper.shipperName}}</td>
                   <td>{{shipper.phone}}</td>
-                  <td><button (click)="deleteShipper(shipper.shipperId)" class="product__btn"><svg
+                  <td><button (click)="deleteShipper(shipper.shipperId)" class="shipper__btn"><svg
                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill"
                     viewBox="0 0 16 16">
                     <path
@@ -24,18 +24,18 @@
                   </svg></button></td>
                 </tr>
                   <tr style="text-align: center;">
-                    <td colspan="4"><button type="button" class="btn add__products" (click)="modalService.open(shipper_modal)">Add
+                    <td colspan="4"><button type="button" class="btn add__shippers" (click)="modalService.open(shipper_modal)">Add
                         Shipper</button> </td>
                   </tr>
         </table>
     </div>
     <ng-template #shipper_modal let-modal>
-      <div>
+      <div class="add__modal">
         <h2>Add Shipper</h2>
-        <div class="product__form">
+        <div class="shipper__form">
           <form (ngSubmit)="addShipper(); modal.dismiss('Submit')">
             <div>
-              <label for="product__name">Shipper Name</label>
+              <label for="shipper__name">Shipper Name</label>
               <input type="text" id="shipper__name" placeholder="Enter shipper name" [(ngModel)]="shipperData.shipperName"
                 [ngModelOptions]="{standalone: true}">
             </div>
@@ -51,5 +51,7 @@
         </div>
       </div>
     </ng-template>
-
+    <ngb-toast *ngIf="toastState" [delay]="3000" #message_toast class="toast">
+      <span class="toast__message">{{message}}</span>
+    </ngb-toast>
 </div>

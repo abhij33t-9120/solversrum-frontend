@@ -12,6 +12,9 @@ export class SupplierComponent implements OnInit {
 
   suppliers : Supplier[]
   supplierVo = new Supplier()
+  toastState: boolean = false;
+  message: string = '';
+
   constructor(private supplierService: SupplierService, public modalService: ModalService) { }
 
   ngOnInit(): void {
@@ -33,11 +36,19 @@ export class SupplierComponent implements OnInit {
     )
   }
 
-  deleteSupplier(id) {
+  deleteSupplier(id:number) {
     this.supplierService.deleteSupplier(id).subscribe(
       {
-        next: res => alert(res),
-        error: error => alert(error.error)
+        next: res => {
+          this.message = res;
+        this.toastState = true
+        setTimeout(() => this.toastState = false, 3000)
+        },
+        error: error => {
+          this.message = error.error
+          this.toastState = true
+          setTimeout(() => this.toastState = false, 3000)
+        }
       }
     )
   }
@@ -46,10 +57,18 @@ export class SupplierComponent implements OnInit {
     this.supplierService.addSupplier(this.supplierVo).subscribe(
       {
         next: res => {
-          alert(res)
-          this.supplierVo = new Supplier()
+          this.message = res
+          this.toastState = true
+          setTimeout(() => this.toastState = false, 3000)
+          
         },
-        error: error => alert(error.error)
+        error: error => {
+          this.message = error.error
+          this.toastState = true
+          setTimeout(() => this.toastState = false, 3000)
+        },
+        complete : () => this.supplierVo = new Supplier() 
+        
       }
       
     )

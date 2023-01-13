@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Api } from 'src/app/api/api';
 import { Order } from 'src/app/models/Order';
 
 @Injectable({
@@ -8,12 +9,12 @@ import { Order } from 'src/app/models/Order';
 })
 export class OrderService {
 
-  private _base = 'http://localhost:8050/api/v1/orders'
+  constructor(private http: HttpClient) { }
 
-  constructor(private http : HttpClient ) {}
-
-  getOrders() : Observable<any>{
-    return this.http.get<Order[]>(this._base)
+  getOrders(id): Observable<any> {
+    if (id != 9910)
+      return this.http.get(Api.orderApi + '/cus/' + id)
+    return this.http.get<Order[]>(Api.orderApi)
   }
 
 }

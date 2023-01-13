@@ -1,0 +1,14 @@
+<div class="enter">
+    <span>{{currentUser == null ? 'Enter into the endless world of shopping...' !! : currentUser.isAdmin ? 'Hello Admin
+        !! ' :
+        'Hello '+currentUser.userName +'!!'}}</span>
+</div>
+
+<ngb-carousel *ngIf="images" [showNavigationArrows]="false" [interval]="4000" [pauseOnFocus]="false"
+    [pauseOnHover]="false">
+    <ng-template class="carousel" ngbSlide *ngFor="let image of images">
+        <div class="img-box">
+            <img [src]="image" />
+        </div>
+    </ng-template>
+</ngb-carousel>

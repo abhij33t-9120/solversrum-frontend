@@ -11,7 +11,8 @@ import { ShipperComponent } from './components/shipper/shipper.component';
 import { FormsModule } from '@angular/forms';
 import { CustomerComponent } from './components/customer/customer.component';
 import { OrderComponent } from './components/order/order.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
+import { LandingComponent } from './components/landing/landing/landing.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,14 +21,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     SupplierComponent,
     ShipperComponent,
     CustomerComponent,
-    OrderComponent
+    OrderComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgbToastModule,
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]

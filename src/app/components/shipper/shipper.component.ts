@@ -11,8 +11,9 @@ import { ShipperService } from 'src/app/services/shipper/shipper.service';
 export class ShipperComponent implements OnInit {
 
   shippers : Shipper[]
-  addBtnState : boolean = false
   shipperData : ShipperVo = new ShipperVo()
+  toastState : boolean = false
+  message : string = ''
   constructor(private shipperService : ShipperService, public modalService : ModalService ) {}
 
   ngOnInit(): void {
@@ -29,19 +30,27 @@ export class ShipperComponent implements OnInit {
   }
 
   deleteShipper(id){
-    this.shipperService.deleteShipper(id).subscribe(
-      res => alert(res)
-    )
+    this.shipperService.deleteShipper(id).subscribe({
+      next : res => {this.message = res;
+        this.toastState = true
+        setTimeout(() => this.toastState = false, 3000)},
+      error : error => {this.message = error.error
+        this.toastState = true
+        setTimeout(() => this.toastState = false, 3000)
+
+      }
+  })
   }
 
   addShipper(){
     this.shipperService.addShipper(this.shipperData).subscribe({
-      next : (res) =>  alert(res),
-      error : (error) => alert(error.error)
+      next : (res) =>  {this.message = res;
+        this.toastState = true
+        setTimeout(() => this.toastState = false, 3000)},
+      error : (error) => {this.message = error.error
+        this.toastState = true
+        setTimeout(() => this.toastState = false, 3000)}
     })
   }
 
-  changeAddBtnState(){
-    this.addBtnState = !this.addBtnState
-  }
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, tap } from 'rxjs';
+import { Api } from 'src/app/api/api';
 import { Supplier } from 'src/app/models/Supplier';
 
 @Injectable({
@@ -8,7 +9,6 @@ import { Supplier } from 'src/app/models/Supplier';
 })
 export class SupplierService {
 
-  private _base = 'http://localhost:8050/api/v1/suppliers'
   private supplierListModified = new Subject<void>()
   constructor(private http : HttpClient) { }
 
@@ -17,11 +17,11 @@ export class SupplierService {
   }
 
   getSuppliers() : Observable<Supplier[]>{
-    return this.http.get<Supplier[]>(this._base)
+    return this.http.get<Supplier[]>(Api.supplierApi)
   }
 
-  deleteSupplier(id){
-    return this.http.delete(this._base+'/id', {responseType : 'text'}).pipe(
+  deleteSupplier(id:number){
+    return this.http.delete(Api.supplierApi+'/'+id, {responseType : 'text'}).pipe(
       tap(
         () => this.supplierListModified.next()
       )
@@ -29,7 +29,7 @@ export class SupplierService {
   }
 
   addSupplier(supplier){
-    return this.http.post(this._base, {'list' : [supplier]}, {responseType : 'text'}).pipe(
+    return this.http.post(Api.supplierApi, {'list' : [supplier]}, {responseType : 'text'}).pipe(
       tap(
         () => this.supplierListModified.next()
       )
